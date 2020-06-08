@@ -1,14 +1,14 @@
+
 const express = require('express');
-const cors = require("cors");
 const app = express();
+const cors = require('cors');
 const bodyParser = require('body-parser');
-
-const port =process.env.PORT || 3001;
-
-app.use(cors())
+const port = 3001;
+const route = require('./router');
+app.use(cors());
 
 app.use(bodyParser.json());
-app.use('/api', (req, res)=> res.json({username:'bryan'}));
+app.use('/api', route);
 
 app.listen(port, ()=>{
     console.log(`express is running on ${port}`);
