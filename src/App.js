@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import Page from "./router";
 function App() {
 /*
