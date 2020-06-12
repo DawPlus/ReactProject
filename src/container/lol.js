@@ -10,7 +10,7 @@ const LolContainer = () => {
     const dispatch = useDispatch();
     const getLolInfo = (e) => {
 
-        dispatch(getSummerner(inputText));
+       // dispatch(getSummerner(inputText));
     }
 
 
