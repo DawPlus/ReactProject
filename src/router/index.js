@@ -10,6 +10,8 @@ import Dashboard from "../pages/dashboard/dashboard"
 import List from "../pages/dashboard/list"
 import NoMatch from "../pages/template/nomatch"
 
+
+import LolAPI from "../pages/lolApi"
 export default () => (<>
         <Router>
               <div id="wrapper"> 
@@ -21,6 +23,7 @@ export default () => (<>
                             <Switch>
                                 <Route path={`/dashboard`} component={Dashboard}  />
                                 <Route path={`/list`} component={List} />
+                                <Route path={`/lolApi`} component={LolAPI} />
                                 <Route component={NoMatch}/>
                              </Switch>
                             </div>
