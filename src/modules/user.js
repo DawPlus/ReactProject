@@ -5,9 +5,7 @@ import createRequestSaga, {createRequestActionTypes} from '../lib/createRequestS
 
 const TEMP_SET_USER = 'user/TEMP_SET_USER'; // 새로고침 이후 임시 로그인 처리
 // 회원 정보 확인
-const [CHECK, CHECK_SUCCESS, CHECK_FAILURE] = createRequestActionTypes(
-  'user/CHECK',
-);
+const [CHECK, CHECK_SUCCESS, CHECK_FAILURE] = createRequestActionTypes('user/CHECK');
 const LOGOUT = 'user/LOGOUT';
 
 export const tempSetUser = createAction(TEMP_SET_USER, user => user);
