@@ -12,7 +12,7 @@ export default () => (<>
                 <Switch>
                     <Route path={`/login`} component={Login}  />
                     <Route path={`/main`} component={Main} />
-                    <Route component={Login}/>
+                    <Route component={NoMatch}/>
                 </Switch>
         </Router>
 </>)

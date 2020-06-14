@@ -3,18 +3,17 @@ import { combineReducers } from 'redux';
 import { all } from 'redux-saga/effects';
 import auth, { authSaga } from './auth';
 
-import test, { testSaga } from './test'
-import lolInfo, {lolSaga} from "./lol"
+import user, { userSaga } from './user'
+
 const rootReducer = combineReducers({
     auth,
-    test,
-    lolInfo 
+    user 
     
   });
   
 
 export function* rootSaga() {
-    yield all([authSaga()  , testSaga(), lolSaga()]);
+    yield all([authSaga(), userSaga()]);
   }
   
 export default rootReducer;

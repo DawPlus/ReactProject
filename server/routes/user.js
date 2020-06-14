@@ -6,12 +6,13 @@ const base64 =  require("js-base64").Base64;
 const router = express.Router();
 
 router.post("/", (req, res) => {
-  const {userId, password} = req.body;
-
+  const {userid, password} = req.body;
+  console.log(userid, password);
+  console.log(req.session)
   // db select문 수행
   db((err, connection) => {
 
-    connection.query("SELECT USER_ID, NAME FROM USER WHERE USER_ID=? AND PASSWORD = ?",[userId, base64.encode(password)], (err, rows) => {
+    connection.query("SELECT USER_ID, NAME FROM USER WHERE USER_ID=? AND PASSWORD = ?",[userid, base64.encode(password)], (err, rows) => {
       connection.release(); // 연결세션 반환.
       if (err) {
         throw err;
@@ -24,7 +25,7 @@ router.post("/", (req, res) => {
             userInfo : userInfo
         }
       }
-
+      console.log(jsonData);
       return res.json(jsonData); // 결과는 rows에 담아 전송
     });
   });

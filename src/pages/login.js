@@ -1,21 +1,74 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect,useState } from "react";
+
 import "../login.scss"
 import { useDispatch , useSelector} from "react-redux";
-import {getUser} from "../modules/auth"
-const LoginPage = () => {
+import {login, changeField, initializeForm} from "../modules/auth"
+import { insertUser } from '../modules/user';
 
-  const user = useSelector(state => state.auth.user);
-  
+
+
+
+const LoginPage = ({ history }) => {
+  const [error, setError] = useState(null);
+  const { form, auth, userInfo, authError, user } = useSelector(({ auth, user }) => ({
+    form: auth.login,
+    auth: auth.auth,
+    userInfo : auth.userInfo,
+    authError: auth.authError,
+    user: user.user,
+  }));
+    console.log(error);
   const dispatch = useDispatch();
+  // 인풋 변경 이벤트 핸들러
+  const onChange = e => {
+    const { value, name } = e.target;
+    dispatch(
+      changeField({
+        form: 'login',
+        key: name,
+        value,
+      }),
+    );
+  };
 
-  const getUSer = () =>{
-    dispatch(getUser());
+  // 컴포넌트가 처음 렌더링 될 때 form 을 초기화함
+  useEffect(() => {
+    dispatch(initializeForm('login'));
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (authError) {
+      console.log('오류 발생');
+      console.log(authError);
+      setError('로그인 실패');
+      return;
+    }
+    if (auth) {
+      console.log('로그인 성공');
+      dispatch(insertUser(userInfo));
+    }
+  }, [auth,userInfo, authError, dispatch]);
+
+
+
+  const getUser = e =>{
+    e.preventDefault();
+    dispatch(login({
+            userid : form.userid
+        , password : form.password
+    }));
   }
 
-useEffect(()=>{
-  console.log(user)
-}, [dispatch, user])
+  useEffect(() => {
+    if (user) {
+      history.push('/main');
+      try {
+        localStorage.setItem('user', JSON.stringify(user));
+      } catch (e) {
+        console.log('localStorage is not working');
+      }
+    }
+  }, [history, user]);
 
     return(<>
     <div id="login">
@@ -24,21 +77,28 @@ useEffect(()=>{
                     <center>
                       <div className="middle">
                        <div id="login">
-                        <form action="javascript:void(0);" method="get" href="/#">
-                          <fieldset className="clearfix">
-                            <p ><span className="fa fa-user"></span><input type="text"  Placeholder="Username" required /></p> 
-                            <p><span className="fa fa-lock"></span><input type="password"  Placeholder="Password" required /></p>
+                        <div  className="formWraps">
+                      
+                            <p>
+                                <span className="fa fa-user"></span>
+                                <input type="text" placeholder="Username" name="userid" value={form.userid} onChange={onChange} required />
+                            </p> 
+                            <p>
+                                <span className="fa fa-lock"></span>
+                                <input type="password" placeholder="Password" name="password" value={form.password}  onChange={onChange} required />
+                            </p>
                             <div>
-                                <span style={{"width":"48%" ,"text-align":"left","display": "inline-block"}}>
-                                    <a className="small-text" href="#">Forgot password?</a>
+                                <span style={{"width":"48%" ,"textAlign":"left","display": "inline-block"}}>
+                                    <a className="small-text" href="/#">Forgot password?</a>
                                 </span>
-                                <span style={{"width":"50%","text-align":"right",  "display":"inline-block"}}>
-                                  <input type="submit" value="Sign In" onClick={getUSer}/>
+                                <span style={{"width":"50%","textAlign":"right",  "display":"inline-block"}}>
+                                  <button onClick={getUser} className="submitBtn" >Sign In</button>
+                                  
                                 </span>
                             </div>
-                          </fieldset>
+                          
                            <div className="clearfix"></div>
-                        </form>
+                        </div>
                         <div className="clearfix"></div>
                       </div> 
                       <div className="logo">LOGO

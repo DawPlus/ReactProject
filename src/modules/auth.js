@@ -10,23 +10,17 @@ const [LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE] = createRequestActionTypes('auth/LOG
 const [USER, USER_SUCCESS, USER_FAILURE]  = createRequestActionTypes('auth/USER');
 
 
-export const changeField = createAction(
-  CHANGE_FIELD,
-  ({ form, key, value }) => ({
-    form, // register , login
-    key, // username, password, passwordConfirm
-    value // 실제 바꾸려는 값
-  })
-);
-export const initializeForm = createAction(INITIALIZE_FORM, form => form); // register / login
-export const login = createAction(LOGIN, ({ username, password }) => ({username,password}));
-export const getUser = createAction(USER);
+export const changeField    = createAction(CHANGE_FIELD,({ form, key, value }) => ({form, key, value}));
+export const initializeForm = createAction(INITIALIZE_FORM, form => form);
+export const login          = createAction(LOGIN, ({ userid, password }) => ({userid,password}));
+export const getUser        = createAction(USER);
 
 
 
 // saga 생성
-const loginSaga = createRequestSaga(LOGIN, authAPI.login);
-const userSaga = createRequestSaga(USER, authAPI.user);
+const loginSaga             = createRequestSaga(LOGIN, authAPI.login);
+const userSaga              = createRequestSaga(USER, authAPI.user);
+
 export function* authSaga() {
   yield takeLatest(LOGIN, loginSaga);
   yield takeLatest(USER, userSaga);
@@ -34,10 +28,10 @@ export function* authSaga() {
 
 const initialState = {
   login: {
-    username: '',
+    userid: '',
     password: ''
   },
-  data : {
+  userInfo : {
 
   },
   auth: null,
@@ -57,10 +51,11 @@ const auth = handleActions(
     }),
   
     // 로그인 성공
-    [LOGIN_SUCCESS]: (state, { payload: auth }) => ({
+    [LOGIN_SUCCESS]: (state, { payload : {data} }) => ({
       ...state,
       authError: null,
-      auth
+      auth : data.auth,
+      userInfo : data.userInfo
     }),
     // 로그인 실패
     [LOGIN_FAILURE]: (state, { payload: error }) => ({

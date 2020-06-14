@@ -6,9 +6,9 @@
      
         box-sizing: border-box;
         margin:0px auto;
-        color: #606468;
-        font: 87.5%/1.5em 'Open Sans', sans-serif;
-        margin: 0;
+          color: #606468;
+          font: 87.5%/1.5em 'Open Sans', sans-serif;
+          margin: 0;
        
 
         &:before,
@@ -81,7 +81,7 @@
 
       /* ---------- LOGIN ---------- */
 
-      #login form{
+      #login .formWraps{
         width: 250px;
       }
       #login, .logo{
@@ -99,7 +99,7 @@
         line-height: 125px;
       }
 
-      #login form span.fa {
+      #login .formWraps span.fa {
         background-color: #fff;
         border-radius: 3px 0px 0px 3px;
         color: #000;
@@ -112,7 +112,7 @@
         width: 50px;
       }
 
-      #login form input {
+      #login .formWraps input {
         height: 50px;
       }
       fieldset{
@@ -121,7 +121,7 @@
           margin: 0;
 
       }
-      #login form input[type="text"], input[type="password"] {
+      #login .formWraps input[type="text"], input[type="password"] {
         background-color: #fff;
         border-radius: 0px 3px 3px 0px;
         color: #000;
@@ -130,7 +130,8 @@
         width: 200px;
       }
 
-      #login form input[type="submit"] {
+      #login .formWraps .submitBtn{
+        border : 0px;
         border-radius: 3px;
         -moz-border-radius: 3px;
         -webkit-border-radius: 3px;
@@ -143,7 +144,7 @@
         height: 30px;
       }
 
-      #login form input[type="submit"]:hover {
+      #login .formWraps .submitBtn:hover {
         background-color: #d44179;
       }
 
