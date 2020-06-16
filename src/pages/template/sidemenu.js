@@ -15,7 +15,7 @@ const SideMenu = () => {
                 <hr className="sidebar-divider my-0"/>
 
                 <li className="nav-item active">
-                    <Link className="nav-link" to="/dashboard">
+                    <Link className="nav-link" to="/main/dashboard">
                         <i className="fas fa-fw fa-tachometer-alt"></i>
                         <span>Dashboard</span>
                     </Link>
@@ -23,7 +23,7 @@ const SideMenu = () => {
                 
                 <li className="nav-item active">
                     <Link className="nav-link" to="/lolAPi">
-                        <i class="fas fa-project-diagram"></i>
+                        <i className="fas fa-project-diagram"></i>
                         <span>LOL API Test</span>
                     </Link>
                 </li>

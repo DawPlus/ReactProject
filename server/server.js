@@ -7,38 +7,28 @@ const port = 3001;
 const route = require('./routes');
 const session = require('express-session');
 var parseurl = require('parseurl');
-app.use(cors());
+var MySQLStore = require('express-mysql-session')(session);   
+const config = require("./config");
 
+
+
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
 
-
+var sessionStore = new MySQLStore(config);  
 app.use(session({
     secret: 'sercretAdminTest',
+   
     resave: false,
-    saveUninitialized: true
-  }))
-  
-  app.use(function (req, res, next) {
-    if (!req.session.views) {
-      req.session.views = {}
-    }
-  
-    // get the url pathname
-    var pathname = parseurl(req).pathname
-  
-    // count the views
-    req.session.views[pathname] = (req.session.views[pathname] || 0) + 1
-  
-    next()
-  })
+    saveUninitialized: true,
+    store: sessionStore        
     
-    app.use('/api', route);
-
-  app.get('/foo', function (req, res, next) {
-      console.log(req.session)
-    res.send('you viewed this page ' + req.session.views['/foo'] + ' times')
-  })
+    // cookie: { maxAge: 60 * 60 * 1000 }  // 1시간 유지 
+}))
+  
+    
+  app.use('/api', route);
 
 
 
