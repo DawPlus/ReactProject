@@ -5,15 +5,18 @@ import auth, { authSaga } from './auth';
 
 import user, { userSaga } from './user'
 
+import starbucks, { starbucksSaga } from './starbucks'
+
 const rootReducer = combineReducers({
     auth,
-    user 
+    user ,
+    starbucks
     
   });
   
 
 export function* rootSaga() {
-    yield all([authSaga(), userSaga()]);
+    yield all([authSaga(), userSaga() ,starbucksSaga()]);
   }
   
 export default rootReducer;

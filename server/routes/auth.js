@@ -8,7 +8,10 @@ const router = express.Router();
 
 // 현재 세션을 반환한다. 
 router.post("/getSession", (req, res) => {
+
   console.log(req.session)
+  console.log(req.sessionID)
+
   const jsonData = {
     data : req.session.loginInfo
 }

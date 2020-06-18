@@ -22,9 +22,9 @@ const SideMenu = () => {
                 </li>
                 
                 <li className="nav-item active">
-                    <Link className="nav-link" to="/lolAPi">
+                    <Link className="nav-link" to="/main/startbugs">
                         <i className="fas fa-project-diagram"></i>
-                        <span>LOL API Test</span>
+                        <span>Starbugs Test</span>
                     </Link>
                 </li>
 

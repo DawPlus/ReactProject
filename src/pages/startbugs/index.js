@@ -1,5 +1,5 @@
 import React from "react";
-import Main from "../../container/lol"
+import Main from "../../container/startbugs"
 
 const LolApi = () => {
 

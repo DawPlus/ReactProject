@@ -18,11 +18,17 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 var sessionStore = new MySQLStore(config);  
 app.use(session({
-    secret: 'sercretAdminTest',
+  
+    secret: 'secret Code',
    
     resave: false,
-    saveUninitialized: true,
-    store: sessionStore        
+    saveUninitialized: false,
+    store: sessionStore,
+    cookie :{
+       maxAge: 3600000,
+        httpOnly: true,
+        secure : false
+    }        
     
     // cookie: { maxAge: 60 * 60 * 1000 }  // 1시간 유지 
 }))
