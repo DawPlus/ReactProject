@@ -7,8 +7,8 @@ import * as authAPI from '../lib/api/auth';
 
 const CHANGE_FIELD = 'auth/CHANGE_FIELD';
 const INITIALIZE_FORM = 'auth/INITIALIZE_FORM';
-const [LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE] = createRequestActionTypes('auth/LOGIN');
-const [LOGOUT, LOGOUT_SUCCESS, LOGOUT_FAILURE] = createRequestActionTypes('auth/LOGOUT');
+const [LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE]       = createRequestActionTypes('auth/LOGIN');
+const [LOGOUT, LOGOUT_SUCCESS, LOGOUT_FAILURE]    = createRequestActionTypes('auth/LOGOUT');
 const [SESSION, SESSION_SUCCESS, SESSION_FAILURE] = createRequestActionTypes('auth/SESSION');
 
 
@@ -26,10 +26,10 @@ export const checkTokken    = createAction(CHECK_TOKKEN,  (tokken) => (tokken))
 
 
 // saga 생성
-const loginSaga             = createRequestSaga(LOGIN,  authAPI.login);
-const logoutSaga             = createRequestSaga(LOGOUT,  authAPI.logout);
-const getSessionSaga             = createRequestSaga(SESSION,  authAPI.getSession);
-const checkSaga             = createRequestSaga(CHECK_TOKKEN,  authAPI.check);
+const loginSaga             = createRequestSaga(LOGIN,          authAPI.login);
+const logoutSaga            = createRequestSaga(LOGOUT,         authAPI.logout);
+const getSessionSaga        = createRequestSaga(SESSION,        authAPI.getSession);
+const checkSaga             = createRequestSaga(CHECK_TOKKEN,   authAPI.checkTokken);
 
 const checkFailureSaga = () => {
   try {
@@ -75,21 +75,23 @@ const auth = handleActions(
     }),
   
     // 로그인 성공
-    [LOGIN_SUCCESS]: (state, { payload : {data} }) =>{
-      
-      return {
+    [LOGIN_SUCCESS]: (state, {payload : data}) =>({
         ...state,
         authError: null,
-        authrization:  data.authrization,
+        authrization: data.authrization,
+        tokken : data.tokken,
         userInfo : data.userInfo
-      }
-    },
-    [LOGOUT_SUCCESS]: (state, { payload : {data} }) =>{
+    }),
+
+
+    [LOGOUT_SUCCESS]: (state, { payload : data }) =>{
+   
       return {
         ...state,
         authError: null,
         authrization: data.authrization,
-        userInfo : initialState.userInfo
+        tokken : data.tokken,
+        userInfo : data.userInfo
       }
     },
     [SESSION_SUCCESS]: (state, { payload : {data} }) =>{
@@ -110,15 +112,14 @@ const auth = handleActions(
     }),
 
     
-    [CHECK_TOKKEN_SUCCESS]: (state, { payload : {data} }) =>{
-      return {
-        ...state,
-        authError: null,
-        auth : data.auth,
-        tokken :  data.tokken,
-        userInfo : data.userInfo
-      };
-    },
+    [CHECK_TOKKEN_SUCCESS]: (state, { payload : {authrization, tokken, userInfo} }) =>({
+      ...state,
+      authError: null,
+      authrization: authrization,
+      tokken : tokken,
+      userInfo : userInfo
+     
+    }),
     
     [LOGOUT_FAILURE]: (state) =>{
       return {

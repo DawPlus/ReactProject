@@ -20,7 +20,7 @@ export const tempSetUser = createAction(TEMP_SET_USER, user => user);
 export const check = createAction(CHECK, tokken => tokken );
 export const logout = createAction(LOGOUT);
 
-const checkSaga = createRequestSaga(CHECK, authAPI.check);
+const checkSaga = createRequestSaga(CHECK, authAPI.checkTokken);
 
 function checkFailureSaga() {
   try {

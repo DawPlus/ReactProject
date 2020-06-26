@@ -8,17 +8,16 @@ import LogoutModal from "../pages/template/logoutmodal";
 import Dashboard from "../pages/dashboard/dashboard"
 import List from "../pages/dashboard/list"
 import NoMatch from "../pages/template/nomatch"
-import Startbugs from "../pages/startbugs"
+
 
 const MainPage = ({match, history}) =>{
     
     const authorization = localStorage.getItem("authrization")
-    console.log(document.cookie);
-    console.log(authorization,"<== auth")
+  
+    console.log(authorization,"<== auth");
     // 항상 발생하는 UseEffect
     useEffect(()=>{
-      //console.log(sessions, tokken, sessions=== tokken)
-    // if(authorization !== "true") history.push("/login")
+        // if(authorization !== "true") history.push("/login")
     },[history, authorization]);
 
     
@@ -33,7 +32,7 @@ const MainPage = ({match, history}) =>{
                           <Switch>
                               <Route path={`${match.path}/dashboard`}     component={Dashboard}  />
                               <Route path={`${match.path}/list`}          component={List} />
-                              <Route path={`${match.path}/startbugs`}     component={Startbugs} />
+                           
                               <Route component={NoMatch}/>
                            </Switch>
                           </div>

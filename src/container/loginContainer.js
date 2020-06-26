@@ -1,20 +1,21 @@
-import React, { useEffect,useState } from "react";
-import { useDispatch , useSelector} from "react-redux";
-import {login ,changeField, initializeForm} from "../modules/auth"
-import Input from "../components/input";
+import React, { useEffect, useState }       from "react";
 import "../login.scss"
-import {withRouter } from 'react-router-dom';
-import { insertUser } from "../modules/user";
+import { useDispatch , useSelector}         from "react-redux";
+import {withRouter }                        from 'react-router-dom';
+import {login ,changeField, initializeForm} from "../modules/auth"
+import { insertUser }                       from "../modules/user";
+import Input                                from "../components/input";
 const LoginContainer = ({ history }) => {
 
 
     const dispatch = useDispatch();
   
     const [error, setError] = useState(null);
-    const {loginInfo, authrization, userInfo, authError } = useSelector(state => state.auth);
+    const {loginInfo, authrization, tokken, userInfo, authError } = useSelector(state => state.auth);
     const {user} = useSelector(state => state.user);  
 
 
+    
     useEffect(() => {
       dispatch(initializeForm('loginInfo'));
     }, [dispatch]);
@@ -38,13 +39,14 @@ const LoginContainer = ({ history }) => {
     useEffect(() => {
       if (user) {
         try {
-          localStorage.setItem("authrization", authrization);
+          sessionStorage.setItem("authrization", authrization);
+          sessionStorage.setItem("tokken",tokken);
           history.push("/main")
         } catch (e) {
           console.log('localStorage is not working');
         }
       }
-    }, [history, user, authrization]);
+    }, [history, user, authrization, tokken]);
   
   
     const loginAction = e =>{
@@ -96,7 +98,6 @@ const LoginContainer = ({ history }) => {
                                                 onChange={onChange}
                                                 required={true}
                                                 />
-                                        
                                     </p>
                                     <div>
                                         <span style={{"width":"48%" ,"textAlign":"left","display": "inline-block"}}>

@@ -11,8 +11,6 @@ export const getSession = () => client.post('/api/auth/getSession');
 
 
 // 로그인 상태 확인
-export const check = (tokken) => client.post('/api/auth/check', tokken);
-
-
+export const checkTokken = (tokken) => client.post('/api/auth/check', {tokken})
 
 export const user = () => client.get(`/api/user`);

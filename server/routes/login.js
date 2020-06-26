@@ -12,7 +12,7 @@ router.post("/", (req, res) => {
   // db select문 수행
   db((err, connection) => {
 
-    connection.query("SELECT USER_ID, NAME FROM USER WHERE USER_ID=? AND PASSWORD = ?",[userid, base64.encode(password)], (err, rows) => {
+    connection.query("SELECT USER_ID, NAME, PASSWORD FROM USER WHERE USER_ID=? AND PASSWORD = ?",[userid, base64.encode(password)], (err, rows) => {
       connection.release(); // 연결세션 반환.
       if (err) {
         throw err;
@@ -21,15 +21,18 @@ router.post("/", (req, res) => {
       // 사용자가 업을경우 상태 500 
       if(rows[0] === undefined){
         res.status(500)//
-        return({error : "사용자가 음슴"})
+        return res.json({error : "사용자가 음슴"})
       }
       const userInfo = rows[0]||{};
-      const tokken =   jwt.sign({userInfo}  ,"Apple",{expiresIn: '7d'});
-      
+      const tokken =   jwt.sign({userInfo}  ,"Apple", {expiresIn: '7d'});
+      console.log(userInfo)
        return res.json({
         authrization : true
         , tokken     : tokken
-        , userInfo
+        , userInfo : {
+            userid : userInfo.USER_ID
+            , name : userInfo.NAME
+        }
       }); // 결과는 rows에 담아 전송
       // req.session.loginInfo= {
       //         authrization  : rows.length >0,
