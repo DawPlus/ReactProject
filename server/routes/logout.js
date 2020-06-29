@@ -9,8 +9,7 @@ router.post("/", (req, res) => {
         req.session;
     });
     return res.json({
-            data : {
-                    auth : false}
+            data : {auth : false}
     })
 });
 

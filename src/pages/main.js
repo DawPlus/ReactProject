@@ -12,13 +12,13 @@ import NoMatch from "../pages/template/nomatch"
 
 const MainPage = ({match, history}) =>{
     
-    const authorization = localStorage.getItem("authrization")
+    const tokken = sessionStorage.getItem("tokken");
   
-    console.log(authorization,"<== auth");
-    // 항상 발생하는 UseEffect
+    console.log(tokken,"<== auth");
+    
     useEffect(()=>{
-        // if(authorization !== "true") history.push("/login")
-    },[history, authorization]);
+        if(!tokken)  history.push("/login")
+    },[history, tokken]);
 
     
         return (<>

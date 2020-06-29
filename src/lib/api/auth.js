@@ -1,10 +1,10 @@
 import client from './client';
 
 // 로그인
-export const login = ({ userid, password }) =>{return client.post('/api/login', { userid, password })};
+export const login = ({ userid, password }) =>{return client.post('/api/auth/login', { userid, password })};
 
 // 로그아웃
-export const logout = () => client.post('/api/logout');
+export const logout = () => client.post('/api/auth/logout');
 
 // 로그아웃
 export const getSession = () => client.post('/api/auth/getSession');
