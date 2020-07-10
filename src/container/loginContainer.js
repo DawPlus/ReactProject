@@ -52,7 +52,7 @@ const LoginContainer = ({ history }) => {
     const loginAction = e =>{
       e.preventDefault();
         dispatch(login({
-                userid : loginInfo.userid
+                id : loginInfo.id
             , password : loginInfo.password
         }));
     }
@@ -82,9 +82,9 @@ const LoginContainer = ({ history }) => {
                                 <div  className="formWraps">
                                     <p>
                                         <span className="fa fa-user"></span>
-                                        <Input  name="userid"
+                                        <Input  name="id"
                                                 placeholder = "User Id"
-                                                value={loginInfo.userid}
+                                                value={loginInfo.id}
                                                 onChange={onChange}
                                                 required={true}
                                                 />

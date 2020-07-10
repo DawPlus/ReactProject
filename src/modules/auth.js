@@ -17,7 +17,7 @@ const [CHECK_TOKKEN, CHECK_TOKKEN_SUCCESS, CHECK_TOKKEN_FAILURE ]  = createReque
 
 export const changeField    = createAction(CHANGE_FIELD,({ form, key, value }) => ({form, key, value}));
 export const initializeForm = createAction(INITIALIZE_FORM, form => form);
-export const login          = createAction(LOGIN, ({ userid, password }) => ({userid,password}));
+export const login          = createAction(LOGIN, ({ id, password }) => ({id,password}));
 export const logout         = createAction(LOGOUT);
 export const getSession     = createAction(SESSION);
 
@@ -51,7 +51,7 @@ export function* authSaga() {
 
 const initialState = {
   loginInfo: {
-    userid: '',
+    id: '',
     password: ''
   },
   userInfo : {

@@ -1,7 +1,7 @@
 import client from './client';
 
 // 로그인
-export const login = ({ userid, password }) =>{return client.post('/api/auth/login', { userid, password })};
+export const login = ({ id, password }) =>{return client.post('/api/auth/login', { id, password })};
 
 // 로그아웃
 export const logout = () => client.post('/api/auth/logout');
