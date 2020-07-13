@@ -8,7 +8,6 @@ import LogoutModal from "../pages/template/logoutmodal";
 import Dashboard from "../pages/dashboard/dashboard"
 import List from "../pages/dashboard/list"
 import NoMatch from "../pages/template/nomatch"
-import AuthContainer from "../container/main/authContainer";
 
 import {useSelector}   from "react-redux";
 const MainPage = ({match, history}) =>{
@@ -18,7 +17,6 @@ const MainPage = ({match, history}) =>{
    
     
     useEffect(()=>{
-
         if(tokken){
             return;
         } 
@@ -27,8 +25,6 @@ const MainPage = ({match, history}) =>{
     },[tokken,history]);
 
     useEffect(()=>{
-        
-        
         if(authrization === false){
             console.log(authrization) ;
             history.push("/login");

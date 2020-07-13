@@ -1,9 +1,9 @@
 import React from "react";
 
 const ConfirmComponent = (props) => {
-        const {id, title, content, cancleTitle="취소", acceptTitle="확인",onCancle, onAccept} = props;
-    return(<>
-    
+
+    const {id, title, content, cancleTitle="취소", acceptTitle="확인",onCancle, onAccept} = props;
+    return(<>    
     <div className="modal fade" id={id+`_modal`} 
          tabIndex="-1" 
          role="dialog" 
