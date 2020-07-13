@@ -1,20 +1,13 @@
-import React, { useEffect, useState }       from "react";
-import "../login.scss"
+import React, { useEffect}       from "react";
+import "../../login.scss"
 import { useDispatch , useSelector}         from "react-redux";
 import {withRouter }                        from 'react-router-dom';
-import {login ,changeField, initializeForm} from "../modules/auth"
-import { insertUser }                       from "../modules/user";
-import Input                                from "../components/input";
+import {login ,changeField, initializeForm} from "../../modules/auth"
+import Input                                from "../../components/input";
 const LoginContainer = ({ history }) => {
 
-
     const dispatch = useDispatch();
-  
-    const [error, setError] = useState(null);
     const {loginInfo, authrization, tokken, userInfo, authError } = useSelector(state => state.auth);
-    const {user} = useSelector(state => state.user);  
-
-
     
     useEffect(() => {
       dispatch(initializeForm('loginInfo'));
@@ -23,30 +16,29 @@ const LoginContainer = ({ history }) => {
     useEffect(() => {
     
       if (authError) {
-          setError('로그인 실패');
-          console.log(error);
+          console.log(authError);
           return;
       }
       if (authrization) {
-        console.log('로그인 성공');
-        dispatch(insertUser(userInfo));
-    
+          sessionStorage.setItem("tokken",tokken);
+          console.log('로그인 성공');
+          history.push("/main");
       }
    
-    }, [authrization, authError, error, userInfo, dispatch]);
+    }, [authrization, authError, userInfo, history, tokken, dispatch]);
   
   
-    useEffect(() => {
-      if (user) {
-        try {
-          sessionStorage.setItem("authrization", authrization);
-          sessionStorage.setItem("tokken",tokken);
-          history.push("/main")
-        } catch (e) {
-          console.log('localStorage is not working');
-        }
-      }
-    }, [history, user, authrization, tokken]);
+    // useEffect(() => {
+    //   if (user) {
+    //     try {
+    //       sessionStorage.setItem("authrization", authrization);
+    //       sessionStorage.setItem("tokken",tokken);
+    //       history.push("/main")
+    //     } catch (e) {
+    //       console.log('localStorage is not working');
+    //     }
+    //   }
+    // }, [history, user, authrization, tokken]);
   
   
     const loginAction = e =>{

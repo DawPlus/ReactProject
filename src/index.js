@@ -18,12 +18,15 @@ const store = createStore(
 );
 
 
+
+
+
 function loadUser() {
   try {
     const tokken = sessionStorage.getItem('tokken'); 
     // 로그인 상태가 아니라면 아무것도 안함
-    if (!tokken) return; 
-    console.log(tokken, "새로고침");
+    if (!tokken) {return}; 
+    console.log("새로고침");
     // 새로고침 할경우  체크해줌 
     store.dispatch(checkTokken(tokken));
  
@@ -31,6 +34,9 @@ function loadUser() {
     console.log('sessionStorage is not working');
   }
 }
+
+
+
 
 sagaMiddleware.run(rootSaga);
 loadUser();
