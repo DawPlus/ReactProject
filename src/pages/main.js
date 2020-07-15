@@ -6,16 +6,16 @@ import ToolBar from "../pages/template/toolbar";
 import Footer from "../pages/template/footer";
 import LogoutModal from "../pages/template/logoutmodal";
 import Dashboard from "../pages/dashboard/dashboard"
-import List from "../pages/dashboard/list"
-import NoMatch from "../pages/template/nomatch"
 
+import NoMatch from "../pages/template/nomatch";
+import Board from "../pages/board/list";
 import {useSelector}   from "react-redux";
 const MainPage = ({match, history}) =>{
       
     const tokken = sessionStorage.getItem("tokken");
     const {authrization} = useSelector(state=> state.auth);
    
-    
+    /*
     useEffect(()=>{
         if(tokken){
             return;
@@ -31,9 +31,10 @@ const MainPage = ({match, history}) =>{
         }
     },[authrization,  history])
     
-
+*/
         return (<>
-      {authrization &&
+      {/*{authrization &&*/}
+      {true&&
             <div>
               <div id="wrapper"> 
                   <SideMenu/>
@@ -42,9 +43,10 @@ const MainPage = ({match, history}) =>{
                           <ToolBar/>
                           <div className="container-fluid">
                           <Switch>
-                              <Route path={`${match.path}/dashboard`}     component={Dashboard}  />
-                              <Route path={`${match.path}/list`}          component={List} />
-                           
+                              <Route path={`${match.path}/dashboard`}      component={Dashboard}  />
+                              <Route path={`${match.path}/board`}          component={Board} />
+                              
+
                               <Route component={NoMatch}/>
                            </Switch>
                           </div>
