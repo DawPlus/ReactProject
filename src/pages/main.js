@@ -15,7 +15,7 @@ const MainPage = ({match, history}) =>{
     const tokken = sessionStorage.getItem("tokken");
     const {authrization} = useSelector(state=> state.auth);
    
-    /*
+   
     useEffect(()=>{
         if(tokken){
             return;
@@ -31,10 +31,10 @@ const MainPage = ({match, history}) =>{
         }
     },[authrization,  history])
     
-*/
+
         return (<>
       {/*{authrization &&*/}
-      {true&&
+      {authrization&&
             <div>
               <div id="wrapper"> 
                   <SideMenu/>

@@ -18,7 +18,6 @@ const AuthContainer = ({history}) => {
 
     useEffect(()=>{
         
-        
         if(authrization === false){
             console.log(authrization) ;
             history.push("/login");

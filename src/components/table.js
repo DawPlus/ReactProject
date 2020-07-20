@@ -42,7 +42,7 @@ const TableComponent = (props) => {
     const {columns , data, title} = props;
 
     return (<>
-     <span class="material-icons">
+     <span className="material-icons">
                   edit
                   </span>
         <MaterialTable
