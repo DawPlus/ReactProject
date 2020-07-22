@@ -3,7 +3,8 @@ import "../../login.scss"
 import { useDispatch , useSelector}         from "react-redux";
 import {withRouter }                        from 'react-router-dom';
 import {login ,changeField, initializeForm} from "../../modules/auth"
-import Input                                from "../../components/input";
+import TextField from '@material-ui/core/TextField';
+
 const LoginContainer = ({ history }) => {
 
     const dispatch = useDispatch();
@@ -53,6 +54,7 @@ const LoginContainer = ({ history }) => {
     // 인풋 변경 이벤트 핸들러
     const onChange = e => {
       const { value, name } = e.target;
+      console.log(e.target.value);
       dispatch(
         changeField({
           form: 'loginInfo',
@@ -61,6 +63,8 @@ const LoginContainer = ({ history }) => {
         }),
       );
     };
+
+
 
 
     return(<>
@@ -72,25 +76,24 @@ const LoginContainer = ({ history }) => {
                             <div className="middle">
                             <div id="login">
                                 <div  className="formWraps">
-                                    <p>
-                                        <span className="fa fa-user"></span>
-                                        <Input  name="id"
-                                                placeholder = "User Id"
-                                                value={loginInfo.id}
-                                                onChange={onChange}
-                                                required={true}
-                                                />
-                                    </p> 
-                                    <p>
-                                        <span className="fa fa-lock"></span>
-                                        <Input  type="password"
-                                                name="password"
-                                                placeholder = "Password"
-                                                value={loginInfo.password}
-                                                onChange={onChange}
-                                                required={true}
-                                                />
-                                    </p>
+                                  
+                                        {/* <span className="fa fa-user"></span> */}
+                                        <TextField
+                                            name="id"
+                                            label="USER ID"
+                                            value={loginInfo.id}
+                                            onChange={onChange}
+                                            autoComplete='off'
+                                        />
+                                  
+                                        <TextField
+                                        type="password"
+                                        label="PassWord"
+                                        name="password"
+                                        value={loginInfo.password}
+                                        onChange={onChange}
+                                        />
+                                    
                                     <div>
                                         <span style={{"width":"48%" ,"textAlign":"left","display": "inline-block"}}>
                                             <a className="small-text" href="/#">Forgot password?</a>

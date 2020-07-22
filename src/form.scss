@@ -117,71 +117,7 @@
    * More sensible default box-sizing:
    * css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice
    */
-  html {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-  }
-  
-  * {
-    padding: 0;
-    margin: 0;
-  }
-  
-  *, *:before, *:after {
-    -webkit-box-sizing: inherit;
-    -moz-box-sizing: inherit;
-    box-sizing: inherit;
-  }
-  
-  /* ==========================================================================
-     #RESET
-     ========================================================================== */
-  /**
-   * A very simple reset that sits on top of Normalize.css.
-   */
-  body,
-  h1, h2, h3, h4, h5, h6,
-  blockquote, p, pre,
-  dl, dd, ol, ul,
-  figure,
-  hr,
-  fieldset, legend {
-    margin: 0;
-    padding: 0;
-  }
-  
-  /**
-   * Remove trailing margins from nested lists.
-   */
-  li > ol,
-  li > ul {
-    margin-bottom: 0;
-  }
-  
-  /**
-   * Remove default table spacing.
-   */
-  table {
-    border-collapse: collapse;
-    border-spacing: 0;
-  }
-  
-  /**
-   * 1. Reset Chrome and Firefox behaviour which sets a `min-width: min-content;`
-   *    on fieldsets.
-   */
-  fieldset {
-    min-width: 0;
-    /* [1] */
-    border: 0;
-  }
-  
-  button {
-    outline: none;
-    background: none;
-    border: none;
-  }
+
   
   /* ==========================================================================
      #PAGE WRAPPER
@@ -189,13 +125,7 @@
   .page-wrapper {
     min-height: 100vh;
   }
-  
-  body {
-    font-family: "Open Sans", "Arial", "Helvetica Neue", sans-serif;
-    font-weight: 400;
-    font-size: 14px;
-  }
-  
+ 
   h1, h2, h3, h4, h5, h6 {
     font-weight: 400;
   }
@@ -345,74 +275,7 @@
     max-width: 680px;
   }
   
-  /* ==========================================================================
-     #BUTTON
-     ========================================================================== */
-  .btn {
-    display: inline-block;
-    line-height: 50px;
-    padding: 0 30px;
-    -webkit-transition: all 0.4s ease;
-    -o-transition: all 0.4s ease;
-    -moz-transition: all 0.4s ease;
-    transition: all 0.4s ease;
-    cursor: pointer;
-    font-size: 15px;
-    text-transform: capitalize;
-    font-weight: 700;
-    color: #fff;
-    font-family: inherit;
-  }
-  
-  .btn--radius {
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-  }
-  
-  .btn--radius-2 {
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-  }
-  
-  .btn--pill {
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    border-radius: 20px;
-  }
-  
-  .btn--green {
-    background: #57b846;
-  }
-  
-  .btn--green:hover {
-    background: #4dae3c;
-  }
-  
-  .btn--blue {
-    background: #4272d7;
-  }
-  
-  .btn--blue:hover {
-    background: #3868cd;
-  }
-  
-  .btn--blue-2 {
-    background: #2c6ed5;
-  }
-  
-  .btn--blue-2:hover {
-    background: #185ac1;
-  }
-  
-  .btn--red {
-    background: #ff4b5a;
-  }
-  
-  .btn--red:hover {
-    background: #eb3746;
-  }
+ 
   
   /* ==========================================================================
      #DATE PICKER

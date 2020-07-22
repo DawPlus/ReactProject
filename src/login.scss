@@ -44,14 +44,14 @@
         text-decoration: underline;
       }
 
-      input {
-        border: none;
-        font-family: 'Open Sans', Arial, sans-serif;
-        font-size: 14px;
-        line-height: 1.5em;
-        padding: 0;
-        -webkit-appearance: none;
-      }
+      // input {
+      //   border: none;
+      //   font-family: 'Open Sans', Arial, sans-serif;
+      //   font-size: 14px;
+      //   line-height: 1.5em;
+      //   padding: 0;
+      //   -webkit-appearance: none;
+      // }
 
       p {
         line-height: 1.5em;
@@ -112,23 +112,23 @@
         width: 50px;
       }
 
-      #login .formWraps input {
-        height: 50px;
-      }
-      fieldset{
-          padding:0;
-          border:0;
-          margin: 0;
+      // #login .formWraps input {
+      //   height: 50px;
+      // }
+      // fieldset{
+      //     padding:0;
+      //     border:0;
+      //     margin: 0;
 
-      }
-      #login .formWraps input[type="text"], input[type="password"] {
-        background-color: #fff;
-        border-radius: 0px 3px 3px 0px;
-        color: #000;
-        margin-bottom: 1em;
-        padding: 0 16px;
-        width: 200px;
-      }
+      // }
+      // #login .formWraps input[type="text"], input[type="password"] {
+      //   background-color: #fff;
+      //   border-radius: 0px 3px 3px 0px;
+      //   color: #000;
+      //   margin-bottom: 1em;
+      //   padding: 0 16px;
+      //   width: 200px;
+      // }
 
       #login .formWraps .submitBtn{
         border : 0px;

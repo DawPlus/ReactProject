@@ -1,8 +1,7 @@
 import React from "react";
-import FileRow from "../../components/board/fileRow";
-import InputRow from "../../components/board/inputRow";
-import TextareaRow from "../../components/board/textareaRow";
-import RadioRow from "../../components/board/radioRow";
+import TextField from '@material-ui/core/TextField';
+import File from "../../components/file";
+
 const FormRow = () => {
 
     const onFileChange = e=> {
@@ -41,22 +40,20 @@ const FormRow = () => {
          */}
     
     }
-    return (<>
-    
-            <div className="card-body">
-                        
-                        <form method="POST">
-                            <InputRow title="제목" id="title" placeholder="제목을 입력해주세요 "/>
-                            <TextareaRow title="내용" id="content" placeholder="내용을 입력해주세요 "/>
-                            <FileRow title="Image (Map)" onChange={onFileChange} id="map"/>
-                            <FileRow title="Image (hint)"onChange={onFileChange} id="hint" desc="Upload your CV/Resume or any other relevant file. Max file size 50 MB"/>
-                            <RadioRow title="문제유형" id="radio"/>
-                        </form>
-                    </div>
-
-    
-    
-    </>);
+    return (<>   
+            <div className="form-group">
+                <TextField id="title" label="제목을 입력해주세요" fullWidth variant="outlined"  autoComplete='off'/>
+            </div>
+            <div className="form-group"> 
+                <TextField  id="content" label="내용을 입력해주세요"  rows={4} fullWidth   autoComplete='off'  multiline variant="outlined"/>
+            </div>
+            <div className="form-group"> 
+                <File id="map" title="UpLoad Map File" onChange={()=>{}} onUpload={()=>{}} />
+            </div>
+            <div className="form-group"> 
+                <File id="hint" title="UpLoad Hint File" onChange={()=>{}} onUpload={()=>{}} />
+            </div> 
+        </>);
 
 }
 export default FormRow;
