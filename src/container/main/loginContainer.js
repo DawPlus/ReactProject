@@ -77,7 +77,7 @@ const LoginContainer = ({ history }) => {
                             <div id="login">
                                 <div  className="formWraps">
                                   
-                                        {/* <span className="fa fa-user"></span> */}
+                                    <div style={{"marginBottom":"25px"}}>
                                         <TextField
                                             name="id"
                                             label="USER ID"
@@ -85,7 +85,8 @@ const LoginContainer = ({ history }) => {
                                             onChange={onChange}
                                             autoComplete='off'
                                         />
-                                  
+                                    </div>
+                                    <div style={{"marginBottom":"25px"}}>
                                         <TextField
                                         type="password"
                                         label="PassWord"
@@ -93,8 +94,8 @@ const LoginContainer = ({ history }) => {
                                         value={loginInfo.password}
                                         onChange={onChange}
                                         />
-                                    
-                                    <div>
+                                    </div>
+                                <div>
                                         <span style={{"width":"48%" ,"textAlign":"left","display": "inline-block"}}>
                                             <a className="small-text" href="/#">Forgot password?</a>
                                         </span>
