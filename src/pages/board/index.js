@@ -5,8 +5,8 @@ import New from"./new";
 const BoardIndex = ({match, history}) => {
     return(<>  
         <p>보드 입니다. </p>
-        <Route path={`${match.path}/`}  component={Board} exact/>
-        <Route path={`${match.path}/new`}  component={New} exact/>
+        <Route path={`${match.path}/`}      component={Board} exact/>
+        <Route path={`${match.path}/new`}   component={New} exact/>
   
     </>);
 

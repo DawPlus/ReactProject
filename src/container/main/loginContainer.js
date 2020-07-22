@@ -96,10 +96,8 @@ const LoginContainer = ({ history }) => {
                                         />
                                     </div>
                                 <div>
-                                        <span style={{"width":"48%" ,"textAlign":"left","display": "inline-block"}}>
-                                            <a className="small-text" href="/#">Forgot password?</a>
-                                        </span>
-                                        <span style={{"width":"50%","textAlign":"right",  "display":"inline-block"}}>
+                                        
+                                        <span style={{ "display":"inline-block"}}>
                                             <button onClick={loginAction} className="submitBtn" >Sign In</button>
                                         </span>
                                     </div>
@@ -107,7 +105,7 @@ const LoginContainer = ({ history }) => {
                                 </div>
                                 <div className="clearfix"></div>
                                 </div>
-                                <div className="logo">LOGO
+                                <div className="logo">ADMIN 
                                     <div className="clearfix"></div>
                                 </div>
                             </div>
