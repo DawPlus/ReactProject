@@ -65,7 +65,7 @@ const ListContainer = () => {
 
 
     return (<>
-    <button onClick={getList}> 클릭</button>
+  
         <Table 
              columns={columns}
               data={list}

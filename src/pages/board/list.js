@@ -11,8 +11,8 @@ const ListPage = ({match, history}) =>{
     }
     return (<>
             <Button variant="contained" color="primary" onClick={onClick}>
-                    신규
-                </Button>
+                 <i className="fas fa-download fa-sm text-white-50"></i>신규
+            </Button>
 
         <ListContainer/>
     </>);

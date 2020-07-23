@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import TextField from '@material-ui/core/TextField';
-import File from "../../components/file";
 import Button from '@material-ui/core/Button';
-const FormRow = () => {
+import File from "../../components/file";
+import InputFileds from "../../components/inputFileds";
 
+
+
+const FormRow = () => {
+   
     const onFileChange = e=> {
          console.log(e);
     
     }
     return (<>   
 
-            <div className="card-body" id="test">
-                           
+            <div className="card-body">  
                 <div className="form-group">
                     <TextField id="title"       label="제목을 입력해주세요" fullWidth variant="outlined"  autoComplete='off'/>
                 </div>
@@ -24,6 +27,13 @@ const FormRow = () => {
                 <div className="form-group"> 
                     <File id="hint" title="UpLoad Hint File" onChange={()=>{}} onUpload={()=>{}} />
                 </div> 
+
+                <div className="form-group"> 
+                    <InputFileds max="5" name="answer"/>
+                </div>
+
+
+
 
                 <Button variant="contained" color="primary">
                     Submit
